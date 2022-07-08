@@ -60,13 +60,58 @@ function togglePortfolioPopup() {
     document.querySelector(".portfolio__popup").classList.toggle("open");
 }
 
-document.querySelector("portfolio__popup-close").addEventListener("click", togglePortfolioPopup)
+document.querySelector(".portfolio__popup-close").addEventListener("click", togglePortfolioPopup)
+
+function portfolioItemDetails(portfolioItem){
+    document.querySelector(".pp__thumbnail img").src = portfolioItem.querySelector(".work__img").src;
+    document.querySelector(".portfolio__popup-subtitle span").innerHTML = portfolioItem.querySelector(".work__title").innerHTML;
+    document.querySelector(".portfolio__popup-body").innerHTML = portfolioItem.querySelector(".portfolio__item-details").innerHTML;
+
+}
 
 /*=============== SERVICES MODAL ===============*/
+const modalViews = document.querySelectorAll('.services__modal'),
+      modelBtns = document.querySelectorAll('.services__button'),
+      modalCloses = document.querySelectorAll('.services__modal-close')
 
-/*=============== SWIPER TESTIMONIAL ===============*/
+let modal = function(modalClick) {
+    modalViews[modalClick].classList.add('active-modal')
+} 
+
+modelBtns.forEach((modelBtn, i) =>{
+    modelBtn.addEventListener('click', () => {
+        modal(i)
+    })
+})
+
+modalCloses.forEach((modalClose) => {
+    modalClose.addEventListener("click", () => {
+        modalViews.forEach((modalViews) =>{
+            modalViews.classList.remove('active-modal')
+        })
+    })
+})
 
 /*=============== INPUT ANIMATION ===============*/
+const inputs = document.querySelectorAll(".input");
+
+function focusFunc() {
+    let parent = this.parentNode;
+    parent.classList.add("focus");
+}
+
+function blurFunc(){
+    let parent = this.parentNode;
+    if(this.value == "") {
+        parent.classList.remove("focus");
+    }
+}
+
+inputs.forEach((input) => { 
+    input.addEventListener("focus", focusFunc);
+    input.addEventListener("blur", blurFunc);
+})
+
 
 /*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
 
