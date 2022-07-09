@@ -115,7 +115,7 @@ inputs.forEach((input) => {
 
 /*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
 //get all sections that have an id defined
-const sections = document.querySelectorAll("section[id");
+const sections = document.querySelectorAll("section[id]");
 
 //add an event listener listening for scroll
 window.addEventListener("scroll", navHighlighter);
